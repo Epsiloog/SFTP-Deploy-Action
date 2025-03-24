@@ -1,5 +1,5 @@
 # Use an up-to-date and secure Alpine version
-FROM alpine:3.18
+FROM alpine:3.18.4
 
 # Install required packages in one RUN statement to reduce image layers
 RUN apk update && apk add --no-cache rsync sshpass openssh
