@@ -4,7 +4,7 @@
 set -eu
 
 TEMP_SSH_PRIVATE_KEY_FILE='../private_key.pem'
-TEMP_SFTP_FILE='../sftp'
+TEMP_SFTP_FILE='%s" "put -r $5 $6'
 
 # 定义一个本地临时目录，用于 rsync 过滤后存放文件
 RSYNC_LOCAL_DEST="../filtered_upload"
@@ -56,7 +56,7 @@ if [ -n "${10}" ]; then
 
 	echo 'SFTP Start'
 	# create a temporary file containing sftp commands
-	printf "%s" "put -r $5 $6" >$TEMP_SFTP_FILE
+	#printf "%s" "put -r $5 $6" >$TEMP_SFTP_FILE
   echo $TEMP_SFTP_FILE
 	#-o StrictHostKeyChecking=no avoid Host key verification failed.
 	SSHPASS=${10} sshpass -e sftp -oBatchMode=no -b $TEMP_SFTP_FILE -P $3 $8 $1@$2
@@ -86,7 +86,7 @@ fi
 
 echo 'SFTP Start'
 # create a temporary file containing sftp commands
-printf "%s" "put -r $5 $6" >$TEMP_SFTP_FILE
+#printf "%s" "put -r $5 $6" >$TEMP_SFTP_FILE
 #-o StrictHostKeyChecking=no avoid Host key verification failed.
 sftp -b $TEMP_SFTP_FILE -P $3 $8 -i $TEMP_SSH_PRIVATE_KEY_FILE $1@$2
 
