@@ -4,7 +4,7 @@
 set -eu
 
 TEMP_SSH_PRIVATE_KEY_FILE='../private_key.pem'
-TEMP_SFTP_FILE='put -r $5 $6'
+TEMP_SFTP_FILE='$5 $6'
 
 # 定义一个本地临时目录，用于 rsync 过滤后存放文件
 RSYNC_LOCAL_DEST="../filtered_upload"
